@@ -4,7 +4,7 @@
 #
 Name     : kio-extras
 Version  : 18.04.3
-Release  : 2
+Release  : 3
 URL      : https://github.com/KDE/kio-extras/archive/v18.04.3.tar.gz
 Source0  : https://github.com/KDE/kio-extras/archive/v18.04.3.tar.gz
 Summary  : No detailed summary available
@@ -31,6 +31,7 @@ BuildRequires : kjobwidgets-dev
 BuildRequires : kpty-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : kxmlgui-dev
+BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(smbclient)
@@ -94,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532200121
+export SOURCE_DATE_EPOCH=1532210880
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -102,7 +103,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1532200121
+export SOURCE_DATE_EPOCH=1532210880
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kio-extras
 cp mtp/LICENCE %{buildroot}/usr/share/doc/kio-extras/mtp_LICENCE
@@ -149,6 +150,7 @@ popd
 /usr/share/kservices5/nfs.protocol
 /usr/share/kservices5/recentdocuments.protocol
 /usr/share/kservices5/settings.protocol
+/usr/share/kservices5/sftp.protocol
 /usr/share/kservices5/smb.protocol
 /usr/share/kservices5/svgthumbnail.desktop
 /usr/share/kservices5/tar.protocol
@@ -230,6 +232,7 @@ popd
 /usr/lib64/qt5/plugins/kf5/kio/nfs.so
 /usr/lib64/qt5/plugins/kf5/kio/recentdocuments.so
 /usr/lib64/qt5/plugins/kf5/kio/settings.so
+/usr/lib64/qt5/plugins/kf5/kio/sftp.so
 /usr/lib64/qt5/plugins/kf5/kio/smb.so
 /usr/lib64/qt5/plugins/kf5/kio/thumbnail.so
 /usr/lib64/qt5/plugins/kfileaudiopreview.so
