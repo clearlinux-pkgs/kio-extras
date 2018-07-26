@@ -25,7 +25,6 @@ libQt5Xml.so.5
 libc.so.6
 libmtp.so.9
 libphonon4qt5.so.4
-libsmbclient.so.0
 libssh.so.4
 libstdc++.so.6
 libutil.so.1
