@@ -1,3 +1,4 @@
+libIlmImf-2_2.so.23
 libKF5Archive.so.5
 libKF5Bookmarks.so.5
 libKF5ConfigCore.so.5
@@ -23,6 +24,7 @@ libQt5Svg.so.5
 libQt5Widgets.so.5
 libQt5Xml.so.5
 libc.so.6
+libgcc_s.so.1
 libmtp.so.9
 libphonon4qt5.so.4
 libsmbclient.so.0
