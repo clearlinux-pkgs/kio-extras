@@ -4,7 +4,7 @@
 #
 Name     : kio-extras
 Version  : 18.08.3
-Release  : 9
+Release  : 10
 URL      : https://github.com/KDE/kio-extras/archive/v18.08.3.tar.gz
 Source0  : https://github.com/KDE/kio-extras/archive/v18.08.3.tar.gz
 Summary  : No detailed summary available
@@ -17,7 +17,22 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
+BuildRequires : gperf
+BuildRequires : karchive-dev
+BuildRequires : kbookmarks-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kdbusaddons-dev
 BuildRequires : kdnssd-dev
+BuildRequires : kguiaddons-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : kpty-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
@@ -25,6 +40,7 @@ BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : shared-mime-info
+BuildRequires : solid-dev
 BuildRequires : taglib-dev
 
 %description
@@ -92,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541689518
+export SOURCE_DATE_EPOCH=1541691549
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -100,7 +116,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541689518
+export SOURCE_DATE_EPOCH=1541691549
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
