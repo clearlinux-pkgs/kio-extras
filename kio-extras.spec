@@ -4,7 +4,7 @@
 #
 Name     : kio-extras
 Version  : 18.11.90
-Release  : 13
+Release  : 14
 URL      : https://github.com/KDE/kio-extras/archive/v18.11.90.tar.gz
 Source0  : https://github.com/KDE/kio-extras/archive/v18.11.90.tar.gz
 Summary  : No detailed summary available
@@ -17,13 +17,30 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
+BuildRequires : gperf
+BuildRequires : karchive-dev
+BuildRequires : kbookmarks-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kdbusaddons-dev
 BuildRequires : kdnssd-dev
+BuildRequires : kguiaddons-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : kpty-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kxmlgui-dev
+BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : shared-mime-info
+BuildRequires : solid-dev
 BuildRequires : taglib-dev
 
 %description
@@ -83,15 +100,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543745033
+export SOURCE_DATE_EPOCH=1543919717
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1543745033
+export SOURCE_DATE_EPOCH=1543919717
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
@@ -146,6 +163,7 @@ popd
 /usr/share/kservices5/opendocumentthumbnail.desktop
 /usr/share/kservices5/recentdocuments.protocol
 /usr/share/kservices5/settings.protocol
+/usr/share/kservices5/sftp.protocol
 /usr/share/kservices5/smb.protocol
 /usr/share/kservices5/svgthumbnail.desktop
 /usr/share/kservices5/tar.protocol
@@ -229,6 +247,7 @@ popd
 /usr/lib64/qt5/plugins/kf5/kio/nfs.so
 /usr/lib64/qt5/plugins/kf5/kio/recentdocuments.so
 /usr/lib64/qt5/plugins/kf5/kio/settings.so
+/usr/lib64/qt5/plugins/kf5/kio/sftp.so
 /usr/lib64/qt5/plugins/kf5/kio/smb.so
 /usr/lib64/qt5/plugins/kf5/kio/thumbnail.so
 /usr/lib64/qt5/plugins/kf5/kiod/kmtpd.so
