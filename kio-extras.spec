@@ -4,7 +4,7 @@
 #
 Name     : kio-extras
 Version  : 18.12.2
-Release  : 18
+Release  : 19
 URL      : https://github.com/KDE/kio-extras/archive/v18.12.2.tar.gz
 Source0  : https://github.com/KDE/kio-extras/archive/v18.12.2.tar.gz
 Summary  : Additional components to increase the functionality of KIO
