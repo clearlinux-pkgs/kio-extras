@@ -1,4 +1,4 @@
-libIlmImf-2_2.so.23
+libIlmImf-2_3.so.24
 libKF5Archive.so.5
 libKF5Bookmarks.so.5
 libKF5ConfigCore.so.5
@@ -28,5 +28,7 @@ libgcc_s.so.1
 libmtp.so.9
 libphonon4qt5.so.4
 libsmbclient.so.0
+libssh.so.4
 libstdc++.so.6
+libtag.so.1
 libutil.so.1

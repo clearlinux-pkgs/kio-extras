@@ -1,5 +1,5 @@
 PKG_NAME := kio-extras
-URL = https://github.com/KDE/kio-extras/archive/v18.12.2.tar.gz
+URL = https://download.kde.org/stable/applications/18.12.2/src/kio-extras-18.12.2.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
