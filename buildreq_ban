@@ -1,2 +1,5 @@
 # This file contains build requirements that get picked up but are
 # undesirable. One entry per line, no whitespace.
+# Optional autodetected build requirement for appimage thumbnail support.
+# Package doesn't yet exist in CL...
+libappimage-dev

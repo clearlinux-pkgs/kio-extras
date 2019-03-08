@@ -1,4 +1,4 @@
-18.12.2
+18.12.3
 gperf
 karchive-dev
 kbookmarks-dev
@@ -15,6 +15,7 @@ kjobwidgets-dev
 kpty-dev
 kwidgetsaddons-dev
 kxmlgui-dev
+libappimage-dev
 libssh-dev
 phonon-dev
 shared-mime-info

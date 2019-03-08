@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kio-extras
-Version  : 18.12.2
-Release  : 21
-URL      : https://download.kde.org/stable/applications/18.12.2/src/kio-extras-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/kio-extras-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/kio-extras-18.12.2.tar.xz.sig
+Version  : 18.12.3
+Release  : 22
+URL      : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.0 LGPL-2.1 MIT
@@ -110,22 +110,23 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-18.12.2
+%setup -q -n kio-extras-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549886125
+export SOURCE_DATE_EPOCH=1552021725
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549886125
+export SOURCE_DATE_EPOCH=1552021725
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
@@ -544,7 +545,7 @@ popd
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
 /usr/lib64/libmolletnetwork5.so.18
-/usr/lib64/libmolletnetwork5.so.18.12.2
+/usr/lib64/libmolletnetwork5.so.18.12.3
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
 /usr/lib64/qt5/plugins/djvuthumbnail.so
