@@ -6,11 +6,11 @@
 #
 Name     : kio-extras
 Version  : 18.12.3
-Release  : 22
+Release  : 23
 URL      : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Summary  : Additional components to increase the functionality of KIO
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.0 LGPL-2.1 MIT
 Requires: kio-extras-data = %{version}-%{release}
@@ -70,6 +70,7 @@ Group: Development
 Requires: kio-extras-lib = %{version}-%{release}
 Requires: kio-extras-data = %{version}-%{release}
 Provides: kio-extras-devel = %{version}-%{release}
+Requires: kio-extras = %{version}-%{release}
 
 %description dev
 dev components for the kio-extras package.
@@ -117,16 +118,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552021725
+export SOURCE_DATE_EPOCH=1555334650
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552021725
+export SOURCE_DATE_EPOCH=1555334650
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
