@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kio-extras
-Version  : 18.12.3
-Release  : 23
-URL      : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/kio-extras-18.12.3.tar.xz.sig
+Version  : 19.04.0
+Release  : 24
+URL      : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz.sig
 Summary  : Additional components to increase the functionality of KIO
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.0 LGPL-2.1 MIT
@@ -21,22 +21,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
-BuildRequires : gperf
-BuildRequires : karchive-dev
-BuildRequires : kbookmarks-dev
-BuildRequires : kcodecs-dev
-BuildRequires : kcompletion-dev
-BuildRequires : kconfigwidgets-dev
-BuildRequires : kdbusaddons-dev
 BuildRequires : kdnssd-dev
-BuildRequires : kguiaddons-dev
-BuildRequires : kiconthemes-dev
-BuildRequires : kio-dev
-BuildRequires : kitemviews-dev
-BuildRequires : kjobwidgets-dev
-BuildRequires : kpty-dev
-BuildRequires : kwidgetsaddons-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
@@ -44,7 +29,7 @@ BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : shared-mime-info
-BuildRequires : solid-dev
+BuildRequires : syntax-highlighting-dev
 BuildRequires : taglib-dev
 
 %description
@@ -111,14 +96,14 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-18.12.3
+%setup -q -n kio-extras-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555334650
+export SOURCE_DATE_EPOCH=1555613473
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -126,7 +111,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555334650
+export SOURCE_DATE_EPOCH=1555613473
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
@@ -179,6 +164,7 @@ popd
 /usr/share/kservices5/comicbookthumbnail.desktop
 /usr/share/kservices5/directorythumbnail.desktop
 /usr/share/kservices5/djvuthumbnail.desktop
+/usr/share/kservices5/ebookthumbnail.desktop
 /usr/share/kservices5/exrthumbnail.desktop
 /usr/share/kservices5/filenamesearch.protocol
 /usr/share/kservices5/fish.protocol
@@ -511,6 +497,34 @@ popd
 /usr/share/doc/HTML/sr/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/sr/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/bookmarks/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/bookmarks/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/bzip2/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/bzip2/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/fish/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/fish/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/gzip/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/gzip/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/info/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/info/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/man/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/man/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/network/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/network/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/nfs/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/nfs/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/recentdocuments/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/recentdocuments/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/sftp/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/sftp/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/smb/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/smb/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/tar/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/tar/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/thumbnail/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/thumbnail/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/xz/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/xz/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/uk/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/bzip2/index.cache.bz2
@@ -544,17 +558,19 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
-/usr/lib64/libmolletnetwork5.so.18
-/usr/lib64/libmolletnetwork5.so.18.12.3
+/usr/lib64/libmolletnetwork5.so.19
+/usr/lib64/libmolletnetwork5.so.19.04.0
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
 /usr/lib64/qt5/plugins/djvuthumbnail.so
+/usr/lib64/qt5/plugins/ebookthumbnail.so
 /usr/lib64/qt5/plugins/exrthumbnail.so
 /usr/lib64/qt5/plugins/imagethumbnail.so
 /usr/lib64/qt5/plugins/jpegthumbnail.so
 /usr/lib64/qt5/plugins/kf5/kded/filenamesearchmodule.so
 /usr/lib64/qt5/plugins/kf5/kded/networkwatcher.so
 /usr/lib64/qt5/plugins/kf5/kded/recentdocumentsnotifier.so
+/usr/lib64/qt5/plugins/kf5/kio/about.so
 /usr/lib64/qt5/plugins/kf5/kio/archive.so
 /usr/lib64/qt5/plugins/kf5/kio/bookmarks.so
 /usr/lib64/qt5/plugins/kf5/kio/filenamesearch.so
@@ -572,7 +588,6 @@ popd
 /usr/lib64/qt5/plugins/kf5/kiod/kmtpd.so
 /usr/lib64/qt5/plugins/kfileaudiopreview.so
 /usr/lib64/qt5/plugins/kritathumbnail.so
-/usr/lib64/qt5/plugins/libkio_about.so
 /usr/lib64/qt5/plugins/opendocumentthumbnail.so
 /usr/lib64/qt5/plugins/svgthumbnail.so
 /usr/lib64/qt5/plugins/textthumbnail.so

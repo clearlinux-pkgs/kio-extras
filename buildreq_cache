@@ -1,4 +1,4 @@
-18.12.3
+19.04.0
 gperf
 karchive-dev
 kbookmarks-dev
@@ -20,4 +20,5 @@ libssh-dev
 phonon-dev
 shared-mime-info
 solid-dev
+syntax-highlighting-dev
 taglib-dev
