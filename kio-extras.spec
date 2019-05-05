@@ -6,7 +6,7 @@
 #
 Name     : kio-extras
 Version  : 19.04.0
-Release  : 24
+Release  : 25
 URL      : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz.sig
@@ -21,7 +21,22 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
+BuildRequires : gperf
+BuildRequires : karchive-dev
+BuildRequires : kbookmarks-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kdbusaddons-dev
 BuildRequires : kdnssd-dev
+BuildRequires : kguiaddons-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : kpty-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
@@ -29,6 +44,7 @@ BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : shared-mime-info
+BuildRequires : solid-dev
 BuildRequires : syntax-highlighting-dev
 BuildRequires : taglib-dev
 
@@ -103,15 +119,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555613473
+export SOURCE_DATE_EPOCH=1557018862
 mkdir -p clr-build
 pushd clr-build
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555613473
+export SOURCE_DATE_EPOCH=1557018862
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
