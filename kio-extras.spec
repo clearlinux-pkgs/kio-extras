@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kio-extras
-Version  : 19.04.0
-Release  : 25
-URL      : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.0/src/kio-extras-19.04.0.tar.xz.sig
+Version  : 19.04.1
+Release  : 26
+URL      : https://download.kde.org/stable/applications/19.04.1/src/kio-extras-19.04.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.1/src/kio-extras-19.04.1.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.1/src/kio-extras-19.04.1.tar.xz.sig
 Summary  : Additional components to increase the functionality of KIO
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.0 LGPL-2.1 MIT
@@ -21,22 +21,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
-BuildRequires : gperf
-BuildRequires : karchive-dev
-BuildRequires : kbookmarks-dev
-BuildRequires : kcodecs-dev
-BuildRequires : kcompletion-dev
-BuildRequires : kconfigwidgets-dev
-BuildRequires : kdbusaddons-dev
 BuildRequires : kdnssd-dev
-BuildRequires : kguiaddons-dev
-BuildRequires : kiconthemes-dev
-BuildRequires : kio-dev
-BuildRequires : kitemviews-dev
-BuildRequires : kjobwidgets-dev
-BuildRequires : kpty-dev
-BuildRequires : kwidgetsaddons-dev
-BuildRequires : kxmlgui-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
@@ -44,7 +29,6 @@ BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : shared-mime-info
-BuildRequires : solid-dev
 BuildRequires : syntax-highlighting-dev
 BuildRequires : taglib-dev
 
@@ -71,6 +55,7 @@ Group: Development
 Requires: kio-extras-lib = %{version}-%{release}
 Requires: kio-extras-data = %{version}-%{release}
 Provides: kio-extras-devel = %{version}-%{release}
+Requires: kio-extras = %{version}-%{release}
 Requires: kio-extras = %{version}-%{release}
 
 %description dev
@@ -112,14 +97,14 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-19.04.0
+%setup -q -n kio-extras-19.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557018862
+export SOURCE_DATE_EPOCH=1557445184
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -134,7 +119,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557018862
+export SOURCE_DATE_EPOCH=1557445184
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
@@ -582,7 +567,7 @@ popd
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
 /usr/lib64/libmolletnetwork5.so.19
-/usr/lib64/libmolletnetwork5.so.19.04.0
+/usr/lib64/libmolletnetwork5.so.19.04.1
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
 /usr/lib64/qt5/plugins/djvuthumbnail.so
