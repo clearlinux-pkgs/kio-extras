@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kio-extras
-Version  : 19.04.2
-Release  : 28
-URL      : https://download.kde.org/stable/applications/19.04.2/src/kio-extras-19.04.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.2/src/kio-extras-19.04.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.2/src/kio-extras-19.04.2.tar.xz.sig
+Version  : 19.04.3
+Release  : 29
+URL      : https://download.kde.org/stable/applications/19.04.3/src/kio-extras-19.04.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.3/src/kio-extras-19.04.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.3/src/kio-extras-19.04.3.tar.xz.sig
 Summary  : Additional components to increase the functionality of KIO
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.0 LGPL-2.1 MIT
@@ -96,16 +96,17 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-19.04.2
+%setup -q -n kio-extras-19.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559891908
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562872491
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -114,11 +115,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1559891908
+export SOURCE_DATE_EPOCH=1562872491
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
@@ -566,7 +567,7 @@ popd
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
 /usr/lib64/libmolletnetwork5.so.19
-/usr/lib64/libmolletnetwork5.so.19.04.2
+/usr/lib64/libmolletnetwork5.so.19.04.3
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
 /usr/lib64/qt5/plugins/djvuthumbnail.so
