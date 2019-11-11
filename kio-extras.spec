@@ -6,7 +6,7 @@
 #
 Name     : kio-extras
 Version  : 19.08.2
-Release  : 32
+Release  : 33
 URL      : https://download.kde.org/stable/applications/19.08.2/src/kio-extras-19.08.2.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.08.2/src/kio-extras-19.08.2.tar.xz
 Source1 : https://download.kde.org/stable/applications/19.08.2/src/kio-extras-19.08.2.tar.xz.sig
@@ -21,24 +21,36 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
+BuildRequires : gperf
+BuildRequires : karchive-dev
+BuildRequires : kbookmarks-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kcompletion-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kdbusaddons-dev
 BuildRequires : kdnssd-dev
+BuildRequires : kguiaddons-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kio-dev
+BuildRequires : kitemviews-dev
+BuildRequires : kjobwidgets-dev
+BuildRequires : kpty-dev
+BuildRequires : kwidgetsaddons-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : shared-mime-info
+BuildRequires : solid-dev
 BuildRequires : syntax-highlighting-dev
 BuildRequires : taglib-dev
 
 %description
-Overview of kio_fish
-====================
-FISH is a protocol to get filesystem access without special server
-software, only using a remote shell. (Hence the name: FIles transferred
-over SHell protocol).
-It was first devised by Pavel Machek <pavel@bug.ucw.cz> and implemented
-as a Midnight Commander vfs module in 1998.
+kio-mtp: KIO slave to access MTP devices
+========================================
 
 %package data
 Summary: data components for the kio-extras package.
@@ -54,7 +66,6 @@ Group: Development
 Requires: kio-extras-lib = %{version}-%{release}
 Requires: kio-extras-data = %{version}-%{release}
 Provides: kio-extras-devel = %{version}-%{release}
-Requires: kio-extras = %{version}-%{release}
 Requires: kio-extras = %{version}-%{release}
 
 %description dev
@@ -97,16 +108,16 @@ locales components for the kio-extras package.
 
 %prep
 %setup -q -n kio-extras-19.08.2
+cd %{_builddir}/kio-extras-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570745443
+export SOURCE_DATE_EPOCH=1573491527
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -115,23 +126,23 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-%cmake ..
+%cmake .. -DLIBSSH_LIBRARIES="-lssh"
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570745443
+export SOURCE_DATE_EPOCH=1573491527
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
-cp COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.GPLv2
-cp COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.LGPLv2.0
-cp COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/COPYING.LGPLv2.1
-cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/cmake_COPYING-CMAKE-SCRIPTS
-cp fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/fish_COPYING
-cp info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/info_LICENSE
-cp man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/man_LICENSE
-cp mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/mtp_COPYING
-cp mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/mtp_LICENCE
+cp %{_builddir}/kio-extras-19.08.2/COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-19.08.2/COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kio-extras-19.08.2/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kio-extras-19.08.2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kio-extras-19.08.2/fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
+cp %{_builddir}/kio-extras-19.08.2/info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
+cp %{_builddir}/kio-extras-19.08.2/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+cp %{_builddir}/kio-extras-19.08.2/mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-19.08.2/mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
 pushd clr-build
 %make_install
 popd
@@ -605,15 +616,13 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kio-extras/COPYING.GPLv2
-/usr/share/package-licenses/kio-extras/COPYING.LGPLv2.0
-/usr/share/package-licenses/kio-extras/COPYING.LGPLv2.1
-/usr/share/package-licenses/kio-extras/cmake_COPYING-CMAKE-SCRIPTS
-/usr/share/package-licenses/kio-extras/fish_COPYING
-/usr/share/package-licenses/kio-extras/info_LICENSE
-/usr/share/package-licenses/kio-extras/man_LICENSE
-/usr/share/package-licenses/kio-extras/mtp_COPYING
-/usr/share/package-licenses/kio-extras/mtp_LICENCE
+/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
+/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
+/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
 
 %files locales -f kfileaudiopreview5.lang -f kio5_activities.lang -f kio5_archive.lang -f kio5_bookmarks.lang -f kio5_fish.lang -f kio5_info.lang -f kio5_man.lang -f kio5_mtp.lang -f kio5_nfs.lang -f kio5_recentdocuments.lang -f kio5_sftp.lang -f kio5_smb.lang -f kio5_thumbnail.lang
 %defattr(-,root,root,-)
