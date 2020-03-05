@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kio-extras
-Version  : 19.12.2
-Release  : 37
-URL      : https://download.kde.org/stable/release-service/19.12.2/src/kio-extras-19.12.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.2/src/kio-extras-19.12.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.2/src/kio-extras-19.12.2.tar.xz.sig
+Version  : 19.12.3
+Release  : 38
+URL      : https://download.kde.org/stable/release-service/19.12.3/src/kio-extras-19.12.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.3/src/kio-extras-19.12.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.3/src/kio-extras-19.12.3.tar.xz.sig
 Summary  : Additional components to increase the functionality of KIO
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.0 LGPL-2.1 MIT
@@ -96,15 +96,15 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-19.12.2
-cd %{_builddir}/kio-extras-19.12.2
+%setup -q -n kio-extras-19.12.3
+cd %{_builddir}/kio-extras-19.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581023989
+export SOURCE_DATE_EPOCH=1583447593
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -121,18 +121,18 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1581023989
+export SOURCE_DATE_EPOCH=1583447593
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
-cp %{_builddir}/kio-extras-19.12.2/COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kio-extras-19.12.2/COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/kio-extras-19.12.2/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/kio-extras-19.12.2/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/kio-extras-19.12.2/fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
-cp %{_builddir}/kio-extras-19.12.2/info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
-cp %{_builddir}/kio-extras-19.12.2/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
-cp %{_builddir}/kio-extras-19.12.2/mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kio-extras-19.12.2/mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-19.12.3/COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-19.12.3/COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kio-extras-19.12.3/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kio-extras-19.12.3/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kio-extras-19.12.3/fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
+cp %{_builddir}/kio-extras-19.12.3/info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
+cp %{_builddir}/kio-extras-19.12.3/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+cp %{_builddir}/kio-extras-19.12.3/mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-19.12.3/mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
 pushd clr-build
 %make_install
 popd
@@ -171,6 +171,7 @@ popd
 /usr/share/kservices5/bookmarks.protocol
 /usr/share/kservices5/bzip.protocol
 /usr/share/kservices5/bzip2.protocol
+/usr/share/kservices5/cifs.protocol
 /usr/share/kservices5/comicbookthumbnail.desktop
 /usr/share/kservices5/directorythumbnail.desktop
 /usr/share/kservices5/djvuthumbnail.desktop
@@ -570,7 +571,7 @@ popd
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
 /usr/lib64/libmolletnetwork5.so.19
-/usr/lib64/libmolletnetwork5.so.19.12.2
+/usr/lib64/libmolletnetwork5.so.19.12.3
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
 /usr/lib64/qt5/plugins/djvuthumbnail.so
