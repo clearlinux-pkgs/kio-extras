@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kio-extras
-Version  : 19.12.3
-Release  : 38
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/kio-extras-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/kio-extras-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/kio-extras-19.12.3.tar.xz.sig
+Version  : 20.04.0
+Release  : 39
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/kio-extras-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kio-extras-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kio-extras-20.04.0.tar.xz.sig
 Summary  : Additional components to increase the functionality of KIO
 Group    : Development/Tools
-License  : BSD-3-Clause GPL-2.0 LGPL-2.0 LGPL-2.1 MIT
+License  : BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 MIT
 Requires: kio-extras-data = %{version}-%{release}
 Requires: kio-extras-lib = %{version}-%{release}
 Requires: kio-extras-license = %{version}-%{release}
@@ -22,10 +22,13 @@ BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
 BuildRequires : kdnssd-dev
+BuildRequires : kdsoap-dev
+BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libmtp)
+BuildRequires : pkgconfig(libtirpc)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : syntax-highlighting-dev
@@ -96,15 +99,15 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-19.12.3
-cd %{_builddir}/kio-extras-19.12.3
+%setup -q -n kio-extras-20.04.0
+cd %{_builddir}/kio-extras-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583447593
+export SOURCE_DATE_EPOCH=1587738106
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -121,18 +124,19 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583447593
+export SOURCE_DATE_EPOCH=1587738106
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
-cp %{_builddir}/kio-extras-19.12.3/COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kio-extras-19.12.3/COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/kio-extras-19.12.3/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/kio-extras-19.12.3/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/kio-extras-19.12.3/fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
-cp %{_builddir}/kio-extras-19.12.3/info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
-cp %{_builddir}/kio-extras-19.12.3/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
-cp %{_builddir}/kio-extras-19.12.3/mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kio-extras-19.12.3/mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-20.04.0/COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-20.04.0/COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kio-extras-20.04.0/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kio-extras-20.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-20.04.0/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kio-extras-20.04.0/fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
+cp %{_builddir}/kio-extras-20.04.0/info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
+cp %{_builddir}/kio-extras-20.04.0/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+cp %{_builddir}/kio-extras-20.04.0/mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-20.04.0/mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
 pushd clr-build
 %make_install
 popd
@@ -149,6 +153,7 @@ popd
 %find_lang kio5_sftp
 %find_lang kio5_smb
 %find_lang kio5_thumbnail
+%find_lang kio5_network
 
 %files
 %defattr(-,root,root,-)
@@ -171,8 +176,8 @@ popd
 /usr/share/kservices5/bookmarks.protocol
 /usr/share/kservices5/bzip.protocol
 /usr/share/kservices5/bzip2.protocol
-/usr/share/kservices5/cifs.protocol
 /usr/share/kservices5/comicbookthumbnail.desktop
+/usr/share/kservices5/cursorthumbnail.desktop
 /usr/share/kservices5/directorythumbnail.desktop
 /usr/share/kservices5/djvuthumbnail.desktop
 /usr/share/kservices5/ebookthumbnail.desktop
@@ -192,8 +197,8 @@ popd
 /usr/share/kservices5/opendocumentthumbnail.desktop
 /usr/share/kservices5/recentdocuments.protocol
 /usr/share/kservices5/settings.protocol
+/usr/share/kservices5/sevenz.protocol
 /usr/share/kservices5/sftp.protocol
-/usr/share/kservices5/smb.protocol
 /usr/share/kservices5/svgthumbnail.desktop
 /usr/share/kservices5/tar.protocol
 /usr/share/kservices5/textthumbnail.desktop
@@ -570,10 +575,11 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
-/usr/lib64/libmolletnetwork5.so.19
-/usr/lib64/libmolletnetwork5.so.19.12.3
+/usr/lib64/libmolletnetwork5.so.20
+/usr/lib64/libmolletnetwork5.so.20.04.0
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
+/usr/lib64/qt5/plugins/cursorthumbnail.so
 /usr/lib64/qt5/plugins/djvuthumbnail.so
 /usr/lib64/qt5/plugins/ebookthumbnail.so
 /usr/lib64/qt5/plugins/exrthumbnail.so
@@ -614,9 +620,10 @@ popd
 /usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
 /usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
 /usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
+/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
 /usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 /usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
 
-%files locales -f kfileaudiopreview5.lang -f kio5_activities.lang -f kio5_archive.lang -f kio5_bookmarks.lang -f kio5_fish.lang -f kio5_info.lang -f kio5_man.lang -f kio5_mtp.lang -f kio5_nfs.lang -f kio5_recentdocuments.lang -f kio5_sftp.lang -f kio5_smb.lang -f kio5_thumbnail.lang
+%files locales -f kfileaudiopreview5.lang -f kio5_activities.lang -f kio5_archive.lang -f kio5_bookmarks.lang -f kio5_fish.lang -f kio5_info.lang -f kio5_man.lang -f kio5_mtp.lang -f kio5_nfs.lang -f kio5_recentdocuments.lang -f kio5_sftp.lang -f kio5_smb.lang -f kio5_thumbnail.lang -f kio5_network.lang
 %defattr(-,root,root,-)
 
