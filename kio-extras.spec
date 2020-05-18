@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kio-extras
-Version  : 20.04.0
-Release  : 40
-URL      : https://download.kde.org/stable/release-service/20.04.0/src/kio-extras-20.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kio-extras-20.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kio-extras-20.04.0.tar.xz.sig
-Summary  : Additional components to increase the functionality of KIO
+Version  : 20.04.1
+Release  : 41
+URL      : https://download.kde.org/stable/release-service/20.04.1/src/kio-extras-20.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.1/src/kio-extras-20.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.1/src/kio-extras-20.04.1.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 MIT
 Requires: kio-extras-data = %{version}-%{release}
@@ -21,8 +21,12 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
+BuildRequires : extra-cmake-modules-data
+BuildRequires : kactivities-dev
+BuildRequires : kactivities-stats-dev
 BuildRequires : kdnssd-dev
 BuildRequires : kdsoap-dev
+BuildRequires : kpty-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
@@ -30,6 +34,7 @@ BuildRequires : pkg-config
 BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(libtirpc)
 BuildRequires : pkgconfig(smbclient)
+BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : syntax-highlighting-dev
 BuildRequires : taglib-dev
@@ -57,7 +62,6 @@ Group: Development
 Requires: kio-extras-lib = %{version}-%{release}
 Requires: kio-extras-data = %{version}-%{release}
 Provides: kio-extras-devel = %{version}-%{release}
-Requires: kio-extras = %{version}-%{release}
 Requires: kio-extras = %{version}-%{release}
 
 %description dev
@@ -99,44 +103,43 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-20.04.0
-cd %{_builddir}/kio-extras-20.04.0
+%setup -q -n kio-extras-20.04.1
+cd %{_builddir}/kio-extras-20.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587738516
+export SOURCE_DATE_EPOCH=1589836320
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake .. -DLIBSSH_LIBRARIES="-lssh"
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1587738516
+export SOURCE_DATE_EPOCH=1589836320
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
-cp %{_builddir}/kio-extras-20.04.0/COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kio-extras-20.04.0/COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
-cp %{_builddir}/kio-extras-20.04.0/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/kio-extras-20.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kio-extras-20.04.0/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
-cp %{_builddir}/kio-extras-20.04.0/fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
-cp %{_builddir}/kio-extras-20.04.0/info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
-cp %{_builddir}/kio-extras-20.04.0/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
-cp %{_builddir}/kio-extras-20.04.0/mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kio-extras-20.04.0/mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-20.04.1/COPYING.GPLv2 %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-20.04.1/COPYING.LGPLv2.0 %{buildroot}/usr/share/package-licenses/kio-extras/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+cp %{_builddir}/kio-extras-20.04.1/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/kio-extras-20.04.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-20.04.1/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kio-extras/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kio-extras-20.04.1/fish/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/6faad2cf3a1ae0af81ae8c58563712e95d36237a
+cp %{_builddir}/kio-extras-20.04.1/info/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/3e6eb4f637da85026b5720924da3536b84cb339e
+cp %{_builddir}/kio-extras-20.04.1/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+cp %{_builddir}/kio-extras-20.04.1/mtp/COPYING %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kio-extras-20.04.1/mtp/LICENCE %{buildroot}/usr/share/package-licenses/kio-extras/4cc77b90af91e615a64ae04893fdffa7939db84c
 pushd clr-build
 %make_install
 popd
@@ -171,6 +174,7 @@ popd
 /usr/share/konqueror/dirtree/remote/mtp-network.desktop
 /usr/share/konqueror/dirtree/remote/smb-network.desktop
 /usr/share/kservices5/about.protocol
+/usr/share/kservices5/activities.protocol
 /usr/share/kservices5/ar.protocol
 /usr/share/kservices5/audiothumbnail.desktop
 /usr/share/kservices5/bookmarks.protocol
@@ -576,7 +580,7 @@ popd
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
 /usr/lib64/libmolletnetwork5.so.20
-/usr/lib64/libmolletnetwork5.so.20.04.0
+/usr/lib64/libmolletnetwork5.so.20.04.1
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
 /usr/lib64/qt5/plugins/cursorthumbnail.so
@@ -588,7 +592,9 @@ popd
 /usr/lib64/qt5/plugins/kf5/kded/filenamesearchmodule.so
 /usr/lib64/qt5/plugins/kf5/kded/networkwatcher.so
 /usr/lib64/qt5/plugins/kf5/kded/recentdocumentsnotifier.so
+/usr/lib64/qt5/plugins/kf5/kfileitemaction/kactivitymanagerd_fileitem_linking_plugin.so
 /usr/lib64/qt5/plugins/kf5/kio/about.so
+/usr/lib64/qt5/plugins/kf5/kio/activities.so
 /usr/lib64/qt5/plugins/kf5/kio/archive.so
 /usr/lib64/qt5/plugins/kf5/kio/bookmarks.so
 /usr/lib64/qt5/plugins/kf5/kio/filenamesearch.so
@@ -600,6 +606,7 @@ popd
 /usr/lib64/qt5/plugins/kf5/kio/network.so
 /usr/lib64/qt5/plugins/kf5/kio/nfs.so
 /usr/lib64/qt5/plugins/kf5/kio/recentdocuments.so
+/usr/lib64/qt5/plugins/kf5/kio/recentlyused.so
 /usr/lib64/qt5/plugins/kf5/kio/settings.so
 /usr/lib64/qt5/plugins/kf5/kio/sftp.so
 /usr/lib64/qt5/plugins/kf5/kio/smb.so
