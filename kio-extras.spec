@@ -6,7 +6,7 @@
 #
 Name     : kio-extras
 Version  : 20.12.1
-Release  : 49
+Release  : 50
 URL      : https://download.kde.org/stable/release-service/20.12.1/src/kio-extras-20.12.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/20.12.1/src/kio-extras-20.12.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/20.12.1/src/kio-extras-20.12.1.tar.xz.sig
