@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kio-extras
-Version  : 21.04.2
-Release  : 56
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kio-extras-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kio-extras-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kio-extras-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 57
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kio-extras-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kio-extras-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kio-extras-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 MIT
+License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
 Requires: kio-extras-data = %{version}-%{release}
 Requires: kio-extras-lib = %{version}-%{release}
 Requires: kio-extras-license = %{version}-%{release}
@@ -38,7 +38,6 @@ BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : syntax-highlighting-dev
 BuildRequires : taglib-dev
-Patch1: 0001-Fix-build-with-GCC-11.patch
 
 %description
 KFileAudioPreview is a plugin for the KFileMetaPreview class in KIO to
@@ -99,48 +98,53 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-21.04.2
-cd %{_builddir}/kio-extras-21.04.2
-%patch1 -p1
+%setup -q -n kio-extras-21.08.1
+cd %{_builddir}/kio-extras-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623389088
+export SOURCE_DATE_EPOCH=1630954627
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake .. -DLIBSSH_LIBRARIES="-lssh"
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623389088
+export SOURCE_DATE_EPOCH=1630954627
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
-cp %{_builddir}/kio-extras-21.04.2/COPYING.LGPLv2.1 %{buildroot}/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kio-extras-21.04.2/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kio-extras/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
-cp %{_builddir}/kio-extras-21.04.2/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
-cp %{_builddir}/kio-extras-21.04.2/smb/kdsoap-ws-discovery-client/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kio-extras-21.04.2/smb/kdsoap-ws-discovery-client/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/d2f4aa13872c7286a16003262a345e5c9a49a066
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/19d98e1b6f8ef12849ea4012a052d3907f336c91
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kio-extras-21.08.1/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kio-extras/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/kio-extras-21.08.1/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+cp %{_builddir}/kio-extras-21.08.1/smb/kdsoap-ws-discovery-client/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kio-extras-21.08.1/smb/kdsoap-ws-discovery-client/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/d2f4aa13872c7286a16003262a345e5c9a49a066
 pushd clr-build
 %make_install
 popd
@@ -157,7 +161,6 @@ popd
 %find_lang kio5_sftp
 %find_lang kio5_smb
 %find_lang kio5_thumbnail
-%find_lang kio5_network
 
 %files
 %defattr(-,root,root,-)
@@ -166,54 +169,32 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/config.kcfg/jpegcreatorsettings5.kcfg
-/usr/share/dbus-1/interfaces/kf5_org.kde.network.kioslavenotifier.xml
-/usr/share/dbus-1/services/org.kde.kmtp.daemon.service
+/usr/share/dbus-1/services/org.kde.kmtpd5.service
 /usr/share/kio_bookmarks/kio_bookmarks.css
 /usr/share/kio_docfilter/kio_docfilter.css
 /usr/share/kio_info/kde-info2html
 /usr/share/kio_info/kde-info2html.conf
-/usr/share/konqsidebartng/virtual_folders/remote/virtualfolder_network.desktop
 /usr/share/konqueror/dirtree/remote/mtp-network.desktop
 /usr/share/konqueror/dirtree/remote/smb-network.desktop
-/usr/share/kservices5/about.protocol
-/usr/share/kservices5/activities.protocol
 /usr/share/kservices5/audiothumbnail.desktop
-/usr/share/kservices5/bookmarks.protocol
-/usr/share/kservices5/bzip.protocol
-/usr/share/kservices5/bzip2.protocol
 /usr/share/kservices5/comicbookthumbnail.desktop
 /usr/share/kservices5/cursorthumbnail.desktop
 /usr/share/kservices5/directorythumbnail.desktop
 /usr/share/kservices5/djvuthumbnail.desktop
 /usr/share/kservices5/ebookthumbnail.desktop
 /usr/share/kservices5/exrthumbnail.desktop
-/usr/share/kservices5/filenamesearch.protocol
-/usr/share/kservices5/fish.protocol
-/usr/share/kservices5/gzip.protocol
 /usr/share/kservices5/imagethumbnail.desktop
-/usr/share/kservices5/info.protocol
 /usr/share/kservices5/jpegthumbnail.desktop
 /usr/share/kservices5/kraorathumbnail.desktop
-/usr/share/kservices5/lzma.protocol
-/usr/share/kservices5/man.protocol
-/usr/share/kservices5/mtp.protocol
-/usr/share/kservices5/network.protocol
-/usr/share/kservices5/nfs.protocol
 /usr/share/kservices5/opendocumentthumbnail.desktop
-/usr/share/kservices5/recentdocuments.protocol
-/usr/share/kservices5/settings.protocol
-/usr/share/kservices5/sftp.protocol
 /usr/share/kservices5/svgthumbnail.desktop
 /usr/share/kservices5/textthumbnail.desktop
-/usr/share/kservices5/thumbnail.protocol
 /usr/share/kservices5/windowsexethumbnail.desktop
 /usr/share/kservices5/windowsimagethumbnail.desktop
-/usr/share/kservices5/xz.protocol
 /usr/share/kservicetypes5/thumbcreator.desktop
-/usr/share/mime-packages/kf5_network.xml
 /usr/share/qlogging-categories5/kio-extras.categories
+/usr/share/qlogging-categories5/kio-extras.renamecategories
 /usr/share/remoteview/mtp-network.desktop
-/usr/share/remoteview/network.desktop
 /usr/share/remoteview/smb-network.desktop
 /usr/share/solid/actions/solid_mtp.desktop
 
@@ -240,8 +221,6 @@ popd
 /usr/share/doc/HTML/ca/kioslave5/info/index.docbook
 /usr/share/doc/HTML/ca/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/ca/kioslave5/man/index.docbook
-/usr/share/doc/HTML/ca/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/ca/kioslave5/network/index.docbook
 /usr/share/doc/HTML/ca/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/ca/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/ca/kioslave5/recentdocuments/index.cache.bz2
@@ -256,6 +235,8 @@ popd
 /usr/share/doc/HTML/ca/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/ca/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/ca/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/ca/kioslave5/zstd/index.cache.bz2
+/usr/share/doc/HTML/ca/kioslave5/zstd/index.docbook
 /usr/share/doc/HTML/de/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/de/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/de/kioslave5/bzip2/index.cache.bz2
@@ -268,8 +249,6 @@ popd
 /usr/share/doc/HTML/de/kioslave5/info/index.docbook
 /usr/share/doc/HTML/de/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/de/kioslave5/man/index.docbook
-/usr/share/doc/HTML/de/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/de/kioslave5/network/index.docbook
 /usr/share/doc/HTML/de/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/de/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/de/kioslave5/recentdocuments/index.cache.bz2
@@ -296,8 +275,6 @@ popd
 /usr/share/doc/HTML/en/kioslave5/info/index.docbook
 /usr/share/doc/HTML/en/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/en/kioslave5/man/index.docbook
-/usr/share/doc/HTML/en/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/en/kioslave5/network/index.docbook
 /usr/share/doc/HTML/en/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/en/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/en/kioslave5/recentdocuments/index.cache.bz2
@@ -312,6 +289,8 @@ popd
 /usr/share/doc/HTML/en/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/en/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/en/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/en/kioslave5/zstd/index.cache.bz2
+/usr/share/doc/HTML/en/kioslave5/zstd/index.docbook
 /usr/share/doc/HTML/es/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/es/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/es/kioslave5/bzip2/index.cache.bz2
@@ -324,8 +303,6 @@ popd
 /usr/share/doc/HTML/es/kioslave5/info/index.docbook
 /usr/share/doc/HTML/es/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/es/kioslave5/man/index.docbook
-/usr/share/doc/HTML/es/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/es/kioslave5/network/index.docbook
 /usr/share/doc/HTML/es/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/es/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/es/kioslave5/recentdocuments/index.cache.bz2
@@ -352,8 +329,6 @@ popd
 /usr/share/doc/HTML/et/kioslave5/info/index.docbook
 /usr/share/doc/HTML/et/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/et/kioslave5/man/index.docbook
-/usr/share/doc/HTML/et/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/et/kioslave5/network/index.docbook
 /usr/share/doc/HTML/et/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/et/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/et/kioslave5/sftp/index.cache.bz2
@@ -378,8 +353,6 @@ popd
 /usr/share/doc/HTML/fr/kioslave5/info/index.docbook
 /usr/share/doc/HTML/fr/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/fr/kioslave5/man/index.docbook
-/usr/share/doc/HTML/fr/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/fr/kioslave5/network/index.docbook
 /usr/share/doc/HTML/fr/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/fr/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/fr/kioslave5/sftp/index.cache.bz2
@@ -422,8 +395,6 @@ popd
 /usr/share/doc/HTML/it/kioslave5/info/index.docbook
 /usr/share/doc/HTML/it/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/it/kioslave5/man/index.docbook
-/usr/share/doc/HTML/it/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/it/kioslave5/network/index.docbook
 /usr/share/doc/HTML/it/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/it/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/it/kioslave5/recentdocuments/index.cache.bz2
@@ -438,6 +409,8 @@ popd
 /usr/share/doc/HTML/it/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/it/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/it/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/it/kioslave5/zstd/index.cache.bz2
+/usr/share/doc/HTML/it/kioslave5/zstd/index.docbook
 /usr/share/doc/HTML/nb/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/nb/kioslave5/man/index.docbook
 /usr/share/doc/HTML/nb/kioslave5/thumbnail/index.cache.bz2
@@ -454,8 +427,6 @@ popd
 /usr/share/doc/HTML/nl/kioslave5/info/index.docbook
 /usr/share/doc/HTML/nl/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/nl/kioslave5/man/index.docbook
-/usr/share/doc/HTML/nl/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/nl/kioslave5/network/index.docbook
 /usr/share/doc/HTML/nl/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/nl/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/nl/kioslave5/recentdocuments/index.cache.bz2
@@ -470,6 +441,8 @@ popd
 /usr/share/doc/HTML/nl/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/nl/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/nl/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/nl/kioslave5/zstd/index.cache.bz2
+/usr/share/doc/HTML/nl/kioslave5/zstd/index.docbook
 /usr/share/doc/HTML/pt/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/pt/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/pt/kioslave5/bzip2/index.cache.bz2
@@ -482,8 +455,6 @@ popd
 /usr/share/doc/HTML/pt/kioslave5/info/index.docbook
 /usr/share/doc/HTML/pt/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/pt/kioslave5/man/index.docbook
-/usr/share/doc/HTML/pt/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/pt/kioslave5/network/index.docbook
 /usr/share/doc/HTML/pt/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/pt/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/pt/kioslave5/recentdocuments/index.cache.bz2
@@ -510,8 +481,6 @@ popd
 /usr/share/doc/HTML/pt_BR/kioslave5/info/index.docbook
 /usr/share/doc/HTML/pt_BR/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/kioslave5/man/index.docbook
-/usr/share/doc/HTML/pt_BR/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/pt_BR/kioslave5/network/index.docbook
 /usr/share/doc/HTML/pt_BR/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/pt_BR/kioslave5/sftp/index.cache.bz2
@@ -524,34 +493,16 @@ popd
 /usr/share/doc/HTML/pt_BR/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/pt_BR/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/kioslave5/xz/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/bookmarks/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/bookmarks/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/bzip2/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/bzip2/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/fish/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/fish/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/gzip/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/gzip/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/info/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/info/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/man/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/man/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/network/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/nfs/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/recentdocuments/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/recentdocuments/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/sftp/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/sftp/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/smb/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/smb/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/tar/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/tar/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/thumbnail/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/thumbnail/index.docbook
-/usr/share/doc/HTML/ru/kioslave5/xz/index.cache.bz2
-/usr/share/doc/HTML/ru/kioslave5/xz/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/sr/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/bzip2/index.cache.bz2
@@ -564,8 +515,6 @@ popd
 /usr/share/doc/HTML/sr/kioslave5/info/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/sr/kioslave5/man/index.docbook
-/usr/share/doc/HTML/sr/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/sr/kioslave5/network/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/sr/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/recentdocuments/index.cache.bz2
@@ -592,8 +541,6 @@ popd
 /usr/share/doc/HTML/sv/kioslave5/info/index.docbook
 /usr/share/doc/HTML/sv/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/sv/kioslave5/man/index.docbook
-/usr/share/doc/HTML/sv/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/sv/kioslave5/network/index.docbook
 /usr/share/doc/HTML/sv/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/sv/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/sv/kioslave5/recentdocuments/index.cache.bz2
@@ -608,6 +555,8 @@ popd
 /usr/share/doc/HTML/sv/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/sv/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/sv/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/zstd/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/zstd/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/uk/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/bzip2/index.cache.bz2
@@ -620,8 +569,6 @@ popd
 /usr/share/doc/HTML/uk/kioslave5/info/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/man/index.cache.bz2
 /usr/share/doc/HTML/uk/kioslave5/man/index.docbook
-/usr/share/doc/HTML/uk/kioslave5/network/index.cache.bz2
-/usr/share/doc/HTML/uk/kioslave5/network/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/uk/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/recentdocuments/index.cache.bz2
@@ -636,13 +583,13 @@ popd
 /usr/share/doc/HTML/uk/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/uk/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/uk/kioslave5/zstd/index.cache.bz2
+/usr/share/doc/HTML/uk/kioslave5/zstd/index.docbook
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
-/usr/lib64/libmolletnetwork5.so.21
-/usr/lib64/libmolletnetwork5.so.21.04.2
 /usr/lib64/qt5/plugins/audiothumbnail.so
 /usr/lib64/qt5/plugins/comicbookthumbnail.so
 /usr/lib64/qt5/plugins/cursorthumbnail.so
@@ -652,7 +599,6 @@ popd
 /usr/lib64/qt5/plugins/imagethumbnail.so
 /usr/lib64/qt5/plugins/jpegthumbnail.so
 /usr/lib64/qt5/plugins/kf5/kded/filenamesearchmodule.so
-/usr/lib64/qt5/plugins/kf5/kded/networkwatcher.so
 /usr/lib64/qt5/plugins/kf5/kded/recentdocumentsnotifier.so
 /usr/lib64/qt5/plugins/kf5/kded/smbwatcher.so
 /usr/lib64/qt5/plugins/kf5/kfileitemaction/kactivitymanagerd_fileitem_linking_plugin.so
@@ -666,7 +612,6 @@ popd
 /usr/lib64/qt5/plugins/kf5/kio/info.so
 /usr/lib64/qt5/plugins/kf5/kio/man.so
 /usr/lib64/qt5/plugins/kf5/kio/mtp.so
-/usr/lib64/qt5/plugins/kf5/kio/network.so
 /usr/lib64/qt5/plugins/kf5/kio/nfs.so
 /usr/lib64/qt5/plugins/kf5/kio/recentdocuments.so
 /usr/lib64/qt5/plugins/kf5/kio/recentlyused.so
@@ -685,18 +630,22 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kio-extras/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/kio-extras/19d98e1b6f8ef12849ea4012a052d3907f336c91
 /usr/share/package-licenses/kio-extras/20079e8f79713dce80ab09774505773c926afa2a
 /usr/share/package-licenses/kio-extras/2a638514c87c4923c0570c55822620fad56f2a33
+/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
 /usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
 /usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
 /usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
 /usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
 /usr/share/package-licenses/kio-extras/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
 /usr/share/package-licenses/kio-extras/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+/usr/share/package-licenses/kio-extras/a4c60b3fefda228cd7439d3565df043192fef137
 /usr/share/package-licenses/kio-extras/d2f4aa13872c7286a16003262a345e5c9a49a066
+/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
-%files locales -f kfileaudiopreview5.lang -f kio5_activities.lang -f kio5_archive.lang -f kio5_bookmarks.lang -f kio5_fish.lang -f kio5_info.lang -f kio5_man.lang -f kio5_mtp.lang -f kio5_nfs.lang -f kio5_recentdocuments.lang -f kio5_sftp.lang -f kio5_smb.lang -f kio5_thumbnail.lang -f kio5_network.lang
+%files locales -f kfileaudiopreview5.lang -f kio5_activities.lang -f kio5_archive.lang -f kio5_bookmarks.lang -f kio5_fish.lang -f kio5_info.lang -f kio5_man.lang -f kio5_mtp.lang -f kio5_nfs.lang -f kio5_recentdocuments.lang -f kio5_sftp.lang -f kio5_smb.lang -f kio5_thumbnail.lang
 %defattr(-,root,root,-)
 

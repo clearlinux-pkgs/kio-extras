@@ -18,7 +18,7 @@ libKF5KIOWidgets.so.5
 libKF5Service.so.5
 libKF5Solid.so.5
 libKF5SyntaxHighlighting.so.5
-libOpenEXR-3_0.so.28
+libOpenEXR-3_0.so.29
 libQt5Core.so.5
 libQt5DBus.so.5
 libQt5Gui.so.5
@@ -30,13 +30,11 @@ libQt5Xml.so.5
 libXcursor.so.1
 libc.so.6
 libgcc_s.so.1
-libkdsoap.so.1
+libkdsoap.so.2
 libmtp.so.9
 libphonon4qt5.so.4
-libpthread.so.0
 libsmbclient.so.0
 libssh.so.4
 libstdc++.so.6
 libtag.so.1
 libtirpc.so.3
-libutil.so.1
