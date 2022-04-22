@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kio-extras
-Version  : 21.12.3
-Release  : 64
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/kio-extras-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/kio-extras-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/kio-extras-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 65
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/kio-extras-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/kio-extras-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/kio-extras-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
@@ -21,6 +21,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules gperf
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
+BuildRequires : extra-cmake-modules shared-mime-info
 BuildRequires : extra-cmake-modules-data
 BuildRequires : glibc-dev
 BuildRequires : kactivities-dev
@@ -98,15 +99,15 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-21.12.3
-cd %{_builddir}/kio-extras-21.12.3
+%setup -q -n kio-extras-22.04.0
+cd %{_builddir}/kio-extras-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646538443
+export SOURCE_DATE_EPOCH=1650671957
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -122,29 +123,29 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646538443
+export SOURCE_DATE_EPOCH=1650671957
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/19d98e1b6f8ef12849ea4012a052d3907f336c91
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kio-extras-21.12.3/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kio-extras/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
-cp %{_builddir}/kio-extras-21.12.3/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
-cp %{_builddir}/kio-extras-21.12.3/smb/kdsoap-ws-discovery-client/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kio-extras-21.12.3/smb/kdsoap-ws-discovery-client/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/d2f4aa13872c7286a16003262a345e5c9a49a066
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/19d98e1b6f8ef12849ea4012a052d3907f336c91
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kio-extras-22.04.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kio-extras/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/kio-extras-22.04.0/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+cp %{_builddir}/kio-extras-22.04.0/smb/kdsoap-ws-discovery-client/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kio-extras-22.04.0/smb/kdsoap-ws-discovery-client/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/d2f4aa13872c7286a16003262a345e5c9a49a066
 pushd clr-build
 %make_install
 popd
@@ -176,22 +177,9 @@ popd
 /usr/share/kio_info/kde-info2html.conf
 /usr/share/konqueror/dirtree/remote/mtp-network.desktop
 /usr/share/konqueror/dirtree/remote/smb-network.desktop
-/usr/share/kservices5/audiothumbnail.desktop
-/usr/share/kservices5/comicbookthumbnail.desktop
-/usr/share/kservices5/cursorthumbnail.desktop
 /usr/share/kservices5/directorythumbnail.desktop
-/usr/share/kservices5/djvuthumbnail.desktop
-/usr/share/kservices5/ebookthumbnail.desktop
-/usr/share/kservices5/exrthumbnail.desktop
-/usr/share/kservices5/imagethumbnail.desktop
-/usr/share/kservices5/jpegthumbnail.desktop
-/usr/share/kservices5/kraorathumbnail.desktop
-/usr/share/kservices5/opendocumentthumbnail.desktop
-/usr/share/kservices5/svgthumbnail.desktop
-/usr/share/kservices5/textthumbnail.desktop
-/usr/share/kservices5/windowsexethumbnail.desktop
-/usr/share/kservices5/windowsimagethumbnail.desktop
 /usr/share/kservicetypes5/thumbcreator.desktop
+/usr/share/mime-packages/org.kde.kio.smb.xml
 /usr/share/qlogging-categories5/kio-extras.categories
 /usr/share/qlogging-categories5/kio-extras.renamecategories
 /usr/share/remoteview/mtp-network.desktop
@@ -497,16 +485,32 @@ popd
 /usr/share/doc/HTML/pt_BR/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/pt_BR/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/bookmarks/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/bookmarks/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/bzip2/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/bzip2/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/fish/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/fish/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/gzip/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/gzip/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/info/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/info/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/man/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/man/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/nfs/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/nfs/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/recentdocuments/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/recentdocuments/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/sftp/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/sftp/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/smb/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/smb/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/tar/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/tar/index.docbook
 /usr/share/doc/HTML/ru/kioslave5/thumbnail/index.cache.bz2
 /usr/share/doc/HTML/ru/kioslave5/thumbnail/index.docbook
+/usr/share/doc/HTML/ru/kioslave5/xz/index.cache.bz2
+/usr/share/doc/HTML/ru/kioslave5/xz/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/sr/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/bzip2/index.cache.bz2
@@ -559,6 +563,8 @@ popd
 /usr/share/doc/HTML/sv/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/sv/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/sv/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/sv/kioslave5/zstd/index.cache.bz2
+/usr/share/doc/HTML/sv/kioslave5/zstd/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/uk/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/uk/kioslave5/bzip2/index.cache.bz2
@@ -592,14 +598,6 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/libkioarchive.so.5
 /usr/lib64/libkioarchive.so.5.97.0
-/usr/lib64/qt5/plugins/audiothumbnail.so
-/usr/lib64/qt5/plugins/comicbookthumbnail.so
-/usr/lib64/qt5/plugins/cursorthumbnail.so
-/usr/lib64/qt5/plugins/djvuthumbnail.so
-/usr/lib64/qt5/plugins/ebookthumbnail.so
-/usr/lib64/qt5/plugins/exrthumbnail.so
-/usr/lib64/qt5/plugins/imagethumbnail.so
-/usr/lib64/qt5/plugins/jpegthumbnail.so
 /usr/lib64/qt5/plugins/kf5/kded/filenamesearchmodule.so
 /usr/lib64/qt5/plugins/kf5/kded/recentdocumentsnotifier.so
 /usr/lib64/qt5/plugins/kf5/kded/smbwatcher.so
@@ -621,13 +619,21 @@ popd
 /usr/lib64/qt5/plugins/kf5/kio/smb.so
 /usr/lib64/qt5/plugins/kf5/kio/thumbnail.so
 /usr/lib64/qt5/plugins/kf5/kiod/kmtpd.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/audiothumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/comicbookthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/cursorthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/djvuthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/ebookthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/exrthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/imagethumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/jpegthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/kritathumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/opendocumentthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/svgthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/textthumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/windowsexethumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/windowsimagethumbnail.so
 /usr/lib64/qt5/plugins/kfileaudiopreview.so
-/usr/lib64/qt5/plugins/kritathumbnail.so
-/usr/lib64/qt5/plugins/opendocumentthumbnail.so
-/usr/lib64/qt5/plugins/svgthumbnail.so
-/usr/lib64/qt5/plugins/textthumbnail.so
-/usr/lib64/qt5/plugins/windowsexethumbnail.so
-/usr/lib64/qt5/plugins/windowsimagethumbnail.so
 
 %files license
 %defattr(0644,root,root,0755)
