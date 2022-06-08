@@ -6,7 +6,7 @@
 #
 Name     : kio-extras
 Version  : 22.04.1
-Release  : 66
+Release  : 67
 URL      : https://download.kde.org/stable/release-service/22.04.1/src/kio-extras-22.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/22.04.1/src/kio-extras-22.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/22.04.1/src/kio-extras-22.04.1.tar.xz.sig
