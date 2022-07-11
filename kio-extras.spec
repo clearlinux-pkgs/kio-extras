@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kio-extras
-Version  : 22.04.2
-Release  : 68
-URL      : https://download.kde.org/stable/release-service/22.04.2/src/kio-extras-22.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.2/src/kio-extras-22.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.2/src/kio-extras-22.04.2.tar.xz.sig
+Version  : 22.04.3
+Release  : 69
+URL      : https://download.kde.org/stable/release-service/22.04.3/src/kio-extras-22.04.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.3/src/kio-extras-22.04.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.3/src/kio-extras-22.04.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
@@ -99,15 +99,15 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-22.04.2
-cd %{_builddir}/kio-extras-22.04.2
+%setup -q -n kio-extras-22.04.3
+cd %{_builddir}/kio-extras-22.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654837318
+export SOURCE_DATE_EPOCH=1657571205
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -123,29 +123,29 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654837318
+export SOURCE_DATE_EPOCH=1657571205
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/19d98e1b6f8ef12849ea4012a052d3907f336c91
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/kio-extras-22.04.2/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kio-extras/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
-cp %{_builddir}/kio-extras-22.04.2/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
-cp %{_builddir}/kio-extras-22.04.2/smb/kdsoap-ws-discovery-client/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kio-extras-22.04.2/smb/kdsoap-ws-discovery-client/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/d2f4aa13872c7286a16003262a345e5c9a49a066
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LGPL-2.1-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LGPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kio-extras/19d98e1b6f8ef12849ea4012a052d3907f336c91
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/kio-extras-22.04.3/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/kio-extras/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/kio-extras-22.04.3/man/LICENSE %{buildroot}/usr/share/package-licenses/kio-extras/67218f86a21c5afe177def300337c7ff8ccf40f9
+cp %{_builddir}/kio-extras-22.04.3/smb/kdsoap-ws-discovery-client/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kio-extras/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kio-extras-22.04.3/smb/kdsoap-ws-discovery-client/LICENSES/GPL-3.0-or-later.txt %{buildroot}/usr/share/package-licenses/kio-extras/d2f4aa13872c7286a16003262a345e5c9a49a066
 pushd clr-build
 %make_install
 popd
