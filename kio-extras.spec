@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kio-extras
-Version  : 22.08.3
-Release  : 73
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/kio-extras-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/kio-extras-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/kio-extras-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 74
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/kio-extras-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/kio-extras-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/kio-extras-22.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
@@ -36,6 +36,7 @@ BuildRequires : pkg-config
 BuildRequires : pkgconfig(libmtp)
 BuildRequires : pkgconfig(libtirpc)
 BuildRequires : pkgconfig(smbclient)
+BuildRequires : qt6base-dev
 BuildRequires : syntax-highlighting-dev
 BuildRequires : taglib-dev
 
@@ -98,15 +99,15 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-22.08.3
-cd %{_builddir}/kio-extras-22.08.3
+%setup -q -n kio-extras-22.12.0
+cd %{_builddir}/kio-extras-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667878494
+export SOURCE_DATE_EPOCH=1670534470
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -122,7 +123,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667878494
+export SOURCE_DATE_EPOCH=1670534470
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp %{_builddir}/kio-extras-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee || :
@@ -149,18 +150,18 @@ pushd clr-build
 %make_install
 popd
 %find_lang kfileaudiopreview5
-%find_lang kio5_activities
 %find_lang kio5_archive
-%find_lang kio5_bookmarks
 %find_lang kio5_fish
-%find_lang kio5_info
 %find_lang kio5_man
-%find_lang kio5_mtp
 %find_lang kio5_nfs
-%find_lang kio5_recentdocuments
 %find_lang kio5_sftp
 %find_lang kio5_smb
 %find_lang kio5_thumbnail
+%find_lang kio5_activities
+%find_lang kio5_bookmarks
+%find_lang kio5_info
+%find_lang kio5_mtp
+%find_lang kio5_recentdocuments
 
 %files
 %defattr(-,root,root,-)
@@ -348,6 +349,8 @@ popd
 /usr/share/doc/HTML/fr/kioslave5/nfs/index.docbook
 /usr/share/doc/HTML/fr/kioslave5/sftp/index.cache.bz2
 /usr/share/doc/HTML/fr/kioslave5/sftp/index.docbook
+/usr/share/doc/HTML/fr/kioslave5/smb/index.cache.bz2
+/usr/share/doc/HTML/fr/kioslave5/smb/index.docbook
 /usr/share/doc/HTML/fr/kioslave5/tar/index.cache.bz2
 /usr/share/doc/HTML/fr/kioslave5/tar/index.docbook
 /usr/share/doc/HTML/fr/kioslave5/thumbnail/index.cache.bz2
@@ -536,6 +539,32 @@ popd
 /usr/share/doc/HTML/sr/kioslave5/thumbnail/index.docbook
 /usr/share/doc/HTML/sr/kioslave5/xz/index.cache.bz2
 /usr/share/doc/HTML/sr/kioslave5/xz/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/bookmarks/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/bookmarks/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/bzip2/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/bzip2/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/fish/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/fish/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/gzip/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/gzip/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/info/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/info/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/man/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/man/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/nfs/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/nfs/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/recentdocuments/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/recentdocuments/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/sftp/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/sftp/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/smb/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/smb/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/tar/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/tar/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/thumbnail/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/thumbnail/index.docbook
+/usr/share/doc/HTML/sr@latin/kioslave5/xz/index.cache.bz2
+/usr/share/doc/HTML/sr@latin/kioslave5/xz/index.docbook
 /usr/share/doc/HTML/sv/kioslave5/bookmarks/index.cache.bz2
 /usr/share/doc/HTML/sv/kioslave5/bookmarks/index.docbook
 /usr/share/doc/HTML/sv/kioslave5/bzip2/index.cache.bz2
@@ -653,6 +682,6 @@ popd
 /usr/share/package-licenses/kio-extras/e458941548e0864907e654fa2e192844ae90fc32
 /usr/share/package-licenses/kio-extras/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
-%files locales -f kfileaudiopreview5.lang -f kio5_activities.lang -f kio5_archive.lang -f kio5_bookmarks.lang -f kio5_fish.lang -f kio5_info.lang -f kio5_man.lang -f kio5_mtp.lang -f kio5_nfs.lang -f kio5_recentdocuments.lang -f kio5_sftp.lang -f kio5_smb.lang -f kio5_thumbnail.lang
+%files locales -f kfileaudiopreview5.lang -f kio5_archive.lang -f kio5_fish.lang -f kio5_man.lang -f kio5_nfs.lang -f kio5_sftp.lang -f kio5_smb.lang -f kio5_thumbnail.lang -f kio5_activities.lang -f kio5_bookmarks.lang -f kio5_info.lang -f kio5_mtp.lang -f kio5_recentdocuments.lang
 %defattr(-,root,root,-)
 
