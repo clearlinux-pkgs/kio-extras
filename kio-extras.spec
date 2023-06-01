@@ -7,7 +7,7 @@
 #
 Name     : kio-extras
 Version  : 23.04.1
-Release  : 80
+Release  : 81
 URL      : https://download.kde.org/stable/release-service/23.04.1/src/kio-extras-23.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.1/src/kio-extras-23.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.1/src/kio-extras-23.04.1.tar.xz.sig
@@ -111,7 +111,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684800173
+export SOURCE_DATE_EPOCH=1685582273
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -144,7 +144,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684800173
+export SOURCE_DATE_EPOCH=1685582273
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp %{_builddir}/kio-extras-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee || :
@@ -679,7 +679,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libkioarchive.so.5
 /V3/usr/lib64/libkioarchive.so.5.97.0
 /V3/usr/lib64/qt5/plugins/kf5/kded/filenamesearchmodule.so
 /V3/usr/lib64/qt5/plugins/kf5/kded/recentdocumentsnotifier.so
