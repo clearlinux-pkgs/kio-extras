@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kio-extras
-Version  : 23.04.2
-Release  : 82
-URL      : https://download.kde.org/stable/release-service/23.04.2/src/kio-extras-23.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.2/src/kio-extras-23.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.2/src/kio-extras-23.04.2.tar.xz.sig
+Version  : 23.04.3
+Release  : 83
+URL      : https://download.kde.org/stable/release-service/23.04.3/src/kio-extras-23.04.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.04.3/src/kio-extras-23.04.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.04.3/src/kio-extras-23.04.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
@@ -103,15 +103,15 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-23.04.2
-cd %{_builddir}/kio-extras-23.04.2
+%setup -q -n kio-extras-23.04.3
+cd %{_builddir}/kio-extras-23.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686523598
+export SOURCE_DATE_EPOCH=1688858575
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -144,7 +144,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1686523598
+export SOURCE_DATE_EPOCH=1688858575
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp %{_builddir}/kio-extras-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee || :
