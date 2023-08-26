@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kio-extras
-Version  : 23.04.3
-Release  : 83
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/kio-extras-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/kio-extras-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/kio-extras-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 84
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/kio-extras-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/kio-extras-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/kio-extras-23.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0 MIT
@@ -25,12 +25,9 @@ BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
 BuildRequires : extra-cmake-modules shared-mime-info
 BuildRequires : extra-cmake-modules-data
 BuildRequires : glibc-dev
-BuildRequires : kactivities-dev
-BuildRequires : kactivities-stats-dev
 BuildRequires : kdnssd-dev
 BuildRequires : kdsoap-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86vm-dev
-BuildRequires : libkexiv2-dev
 BuildRequires : libssh-dev
 BuildRequires : phonon-dev
 BuildRequires : pkg-config
@@ -103,15 +100,15 @@ locales components for the kio-extras package.
 
 
 %prep
-%setup -q -n kio-extras-23.04.3
-cd %{_builddir}/kio-extras-23.04.3
+%setup -q -n kio-extras-23.08.0
+cd %{_builddir}/kio-extras-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688858575
+export SOURCE_DATE_EPOCH=1693021674
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -144,7 +141,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688858575
+export SOURCE_DATE_EPOCH=1693021674
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kio-extras
 cp %{_builddir}/kio-extras-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/kio-extras/52039e5c19c950d4c7d6ec5da42ebba2c6def7ee || :
@@ -215,8 +212,9 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/KF5/kio_archivebase.h
-/usr/include/KF5/libkioarchive_export.h
+/usr/include/KioArchive/kio_archivebase.h
+/usr/include/KioArchive/kioarchive_version.h
+/usr/include/KioArchive/libkioarchive_export.h
 /usr/lib64/cmake/KioArchive/KioArchiveConfig.cmake
 /usr/lib64/cmake/KioArchive/KioArchiveConfigVersion.cmake
 /usr/lib64/cmake/KioArchive/KioArchiveTargets-relwithdebinfo.cmake
@@ -679,14 +677,10 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libkioarchive.so.5.97.0
+/V3/usr/lib64/libkioarchive.so.5.98.0
 /V3/usr/lib64/qt5/plugins/kf5/kded/filenamesearchmodule.so
 /V3/usr/lib64/qt5/plugins/kf5/kded/recentdocumentsnotifier.so
 /V3/usr/lib64/qt5/plugins/kf5/kded/smbwatcher.so
-/V3/usr/lib64/qt5/plugins/kf5/kfileitemaction/forgetfileitemaction.so
-/V3/usr/lib64/qt5/plugins/kf5/kfileitemaction/kactivitymanagerd_fileitem_linking_plugin.so
-/V3/usr/lib64/qt5/plugins/kf5/kio/about.so
-/V3/usr/lib64/qt5/plugins/kf5/kio/activities.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/archive.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/bookmarks.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/filter.so
@@ -697,7 +691,6 @@ popd
 /V3/usr/lib64/qt5/plugins/kf5/kio/mtp.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/nfs.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/recentdocuments.so
-/V3/usr/lib64/qt5/plugins/kf5/kio/recentlyused.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/sftp.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/smb.so
 /V3/usr/lib64/qt5/plugins/kf5/kio/thumbnail.so
@@ -710,7 +703,7 @@ popd
 /V3/usr/lib64/qt5/plugins/kf5/thumbcreator/exrthumbnail.so
 /V3/usr/lib64/qt5/plugins/kf5/thumbcreator/imagethumbnail.so
 /V3/usr/lib64/qt5/plugins/kf5/thumbcreator/jpegthumbnail.so
-/V3/usr/lib64/qt5/plugins/kf5/thumbcreator/kritathumbnail.so
+/V3/usr/lib64/qt5/plugins/kf5/thumbcreator/kraorathumbnail.so
 /V3/usr/lib64/qt5/plugins/kf5/thumbcreator/opendocumentthumbnail.so
 /V3/usr/lib64/qt5/plugins/kf5/thumbcreator/svgthumbnail.so
 /V3/usr/lib64/qt5/plugins/kf5/thumbcreator/textthumbnail.so
@@ -718,14 +711,10 @@ popd
 /V3/usr/lib64/qt5/plugins/kf5/thumbcreator/windowsimagethumbnail.so
 /V3/usr/lib64/qt5/plugins/kfileaudiopreview.so
 /usr/lib64/libkioarchive.so.5
-/usr/lib64/libkioarchive.so.5.97.0
+/usr/lib64/libkioarchive.so.5.98.0
 /usr/lib64/qt5/plugins/kf5/kded/filenamesearchmodule.so
 /usr/lib64/qt5/plugins/kf5/kded/recentdocumentsnotifier.so
 /usr/lib64/qt5/plugins/kf5/kded/smbwatcher.so
-/usr/lib64/qt5/plugins/kf5/kfileitemaction/forgetfileitemaction.so
-/usr/lib64/qt5/plugins/kf5/kfileitemaction/kactivitymanagerd_fileitem_linking_plugin.so
-/usr/lib64/qt5/plugins/kf5/kio/about.so
-/usr/lib64/qt5/plugins/kf5/kio/activities.so
 /usr/lib64/qt5/plugins/kf5/kio/archive.so
 /usr/lib64/qt5/plugins/kf5/kio/bookmarks.so
 /usr/lib64/qt5/plugins/kf5/kio/filter.so
@@ -736,7 +725,6 @@ popd
 /usr/lib64/qt5/plugins/kf5/kio/mtp.so
 /usr/lib64/qt5/plugins/kf5/kio/nfs.so
 /usr/lib64/qt5/plugins/kf5/kio/recentdocuments.so
-/usr/lib64/qt5/plugins/kf5/kio/recentlyused.so
 /usr/lib64/qt5/plugins/kf5/kio/sftp.so
 /usr/lib64/qt5/plugins/kf5/kio/smb.so
 /usr/lib64/qt5/plugins/kf5/kio/thumbnail.so
@@ -749,7 +737,7 @@ popd
 /usr/lib64/qt5/plugins/kf5/thumbcreator/exrthumbnail.so
 /usr/lib64/qt5/plugins/kf5/thumbcreator/imagethumbnail.so
 /usr/lib64/qt5/plugins/kf5/thumbcreator/jpegthumbnail.so
-/usr/lib64/qt5/plugins/kf5/thumbcreator/kritathumbnail.so
+/usr/lib64/qt5/plugins/kf5/thumbcreator/kraorathumbnail.so
 /usr/lib64/qt5/plugins/kf5/thumbcreator/opendocumentthumbnail.so
 /usr/lib64/qt5/plugins/kf5/thumbcreator/svgthumbnail.so
 /usr/lib64/qt5/plugins/kf5/thumbcreator/textthumbnail.so
