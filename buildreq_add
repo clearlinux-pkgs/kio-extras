@@ -2,3 +2,7 @@
 # picked up automatically. One name per line, no whitespace.
 buildreq-kde
 kdsoap-dev
+qcoro6-dev
+libkexiv2-dev
+kdsoap-ws-discovery-client-dev
+phonon-dev
