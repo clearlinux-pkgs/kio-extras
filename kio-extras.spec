@@ -9,7 +9,7 @@
 #
 Name     : kio-extras
 Version  : 24.12.0
-Release  : 104
+Release  : 105
 URL      : https://download.kde.org/stable/release-service/24.12.0/src/kio-extras-24.12.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/24.12.0/src/kio-extras-24.12.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/24.12.0/src/kio-extras-24.12.0.tar.xz.sig
