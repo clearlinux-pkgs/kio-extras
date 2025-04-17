@@ -11,6 +11,7 @@ libKF6KIOCore.so.6
 libKF6KIOFileWidgets.so.6
 libKF6KIOGui.so.6
 libKF6KIOWidgets.so.6
+libKF6Notifications.so.6
 libKF6Service.so.6
 libKF6Solid.so.6
 libKF6SyntaxHighlighting.so.6
@@ -23,6 +24,7 @@ libQt6Core.so.6
 libQt6Core5Compat.so.6
 libQt6DBus.so.6
 libQt6Gui.so.6
+libQt6Network.so.6
 libQt6Sql.so.6
 libQt6Svg.so.6
 libQt6Widgets.so.6
@@ -34,3 +36,4 @@ libphonon4qt6.so.4
 libssh.so.4
 libstdc++.so.6
 libtag.so.2
+libtirpc.so.3
