@@ -33,6 +33,7 @@ libc.so.6
 libgcc_s.so.1
 libmtp.so.9
 libphonon4qt6.so.4
+libproxy.so.1
 libssh.so.4
 libstdc++.so.6
 libtag.so.2
